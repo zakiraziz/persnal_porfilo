@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react"; // 4.2k (gzipped: 1.8k)
+import "./App.css";
+import { LoadingScreen } from "./components/LoadingScreen";
+import { Navbar } from "./components/Navbar";
+import { MobileMenu } from "./components/MobileMenu";
+import { Home } from "./components/sections/Home"
+import "./index.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <>
+            {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}{" "}
+            <div
+             className={`min-h-screen transition-opacity duration-700 ${
+                isLoaded ? "opacity-100" : "opacity-0"
+             } bg-black text-gray-100`}
+            >
+                <Navbar manuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
+                <MobileMenu manuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
+                <Home />
+            </div>
+        </>
+    );
 }
 
-export default App
+export default App;
