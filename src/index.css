@@ -9,6 +9,7 @@ body {
   color: #f3f4f6;
 }
 
+/* Original animations */
 @layer utilities {
   @keyframes blink {
     0%,
@@ -38,4 +39,129 @@ body {
   .animate-loading-bar {
     animation: loading 0.8s ease infinite;
   }
+}
+
+/* Moe additions */
+@layer utilities {
+  /* Kawaii bounce animation */
+  @keyframes kawaii-bounce {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-15px) scale(1.1);
+    }
+  }
+
+  .animate-kawaii-bounce {
+    animation: kawaii-bounce 0.8s ease infinite;
+  }
+
+  /* Sparkle animation */
+  @keyframes sparkle {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+  }
+
+  .animate-sparkle {
+    animation: sparkle 1.5s ease infinite;
+  }
+
+  /* Heartbeat animation */
+  @keyframes heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    25% {
+      transform: scale(1.1);
+    }
+    50% {
+      transform: scale(1);
+    }
+    75% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .animate-heartbeat {
+    animation: heartbeat 1.2s ease infinite;
+  }
+
+  /* Floating animation */
+  @keyframes floating {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+
+  /* Pastel color utilities */
+  .bg-pastel-pink {
+    background-color: #ffd6e0;
+  }
+  .bg-pastel-blue {
+    background-color: #c1e0ff;
+  }
+  .bg-pastel-purple {
+    background-color: #e0d1ff;
+  }
+  .bg-pastel-green {
+    background-color: #d1ffdf;
+  }
+  .bg-pastel-yellow {
+    background-color: #fff9d1;
+  }
+
+  /* Cute border styles */
+  .border-kawaii {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+  .border-dashed-cute {
+    border: 2px dashed #ff85a2;
+  }
+
+  /* Text shadow for cute effect */
+  .text-shadow-moe {
+    text-shadow: 2px 2px 0px #ff85a2, 
+                 4px 4px 0px rgba(255, 133, 162, 0.3);
+  }
+}
+
+/* Additional moe styles */
+.moe-cursor {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><circle cx='16' cy='16' r='8' fill='%23ff85a2'/><circle cx='16' cy='16' r='6' fill='%23fff'/></svg>"), auto;
+}
+
+/* Kawaii loading spinner */
+.kawaii-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ffd6e0;
+  border-top: 4px solid #ff85a2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
