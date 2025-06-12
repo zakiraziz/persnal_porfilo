@@ -1,20 +1,96 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#000000" />
+    
+    <!-- Primary Meta Tags -->
+    <title>My Awesome Portfolio | Vite + React</title>
+    <meta name="title" content="My Awesome Portfolio | Vite + React">
+    <meta name="description" content="A modern portfolio built with Vite and React showcasing my projects and skills">
+    <meta name="keywords" content="portfolio, react, vite, developer, projects">
+    <meta name="author" content="Your Name">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourportfolio.com/">
+    <meta property="og:title" content="My Awesome Portfolio | Vite + React">
+    <meta property="og:description" content="A modern portfolio built with Vite and React showcasing my projects and skills">
+    <meta property="og:image" content="/social-preview.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourportfolio.com/">
+    <meta property="twitter:title" content="My Awesome Portfolio | Vite + React">
+    <meta property="twitter:description" content="A modern portfolio built with Vite and React showcasing my projects and skills">
+    <meta property="twitter:image" content="/social-preview.jpg">
+    
+    <!-- Favicon and App Icons -->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="alternate icon" type="image/png" href="/favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+    <link rel="manifest" href="/site.webmanifest" crossorigin="use-credentials">
+    
+    <!-- Preconnect and Preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" />
+    
+    <!-- Fonts -->
     <link 
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght"
-    rel="styleSheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
-    <meta name="viewport" content="width=device-width, intial-scale=1.0" />
-    <title>Vite + React </title>
-    <head>
-      <body>
-        <div id="root"></div>
-        <script type="module" src="/crs/main.jsx"></script>
-      </body>
-    </head>
-    </html>
+    
+    <!-- Critical CSS (optional) -->
+    <style>
+      .no-js #root { display: none; }
+      .js-loading { opacity: 0; transition: opacity 0.3s ease-in-out; }
+    </style>
+    
+    <!-- No-JS Fallback -->
+    <noscript>
+      <style>
+        .no-js { display: block !important; }
+        .js-loading { opacity: 1 !important; }
+      </style>
+      <div class="no-js">
+        <h1>Please enable JavaScript to view this website.</h1>
+      </div>
+    </noscript>
+  </head>
+  
+  <body class="js-loading">
+    <div id="root"></div>
+    
+    <!-- Scripts -->
+    <script>
+      // Remove no-js class and show content when JS loads
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('js');
+      window.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.remove('js-loading');
+      });
+      
+      // Service Worker Registration
+      if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
+    
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Fallback for older browsers -->
+    <script nomodule>
+      document.getElementById('root').innerHTML = 
+        '<h1>Your browser doesn\'t support ES modules. Please update your browser.</h1>';
+    </script>
+  </body>
+</html>
