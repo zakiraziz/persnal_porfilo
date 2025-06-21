@@ -1,17 +1,28 @@
+/* Kawaii Theme Enhancement */
 .App {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif; /* More playful font */
-  background-color: #fff5f7; /* Soft pink background */
-  position: relative;
-  overflow-x: hidden;
-  min-height: 100vh;
+  /* Existing styles */
+  /* Add a subtle rainbow glow animation */
+  animation: rainbow-glow 30s ease infinite alternate;
 }
 
-/* Kawaii decorative elements */
-.App::before {
+@keyframes rainbow-glow {
+  0% { box-shadow: 0 0 80px rgba(255,182,193,0.1); }
+  20% { box-shadow: 0 0 80px rgba(255,215,0,0.1); }
+  40% { box-shadow: 0 0 80px rgba(144,238,144,0.1); }
+  60% { box-shadow: 0 0 80px rgba(173,216,230,0.1); }
+  80% { box-shadow: 0 0 80px rgba(221,160,221,0.1); }
+  100% { box-shadow: 0 0 80px rgba(255,192,203,0.1); }
+}
+
+/* Kawaii Cursor */
+@media (min-width: 768px) {
+  body {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><path fill='%23ff6b8b' d='M16,3C8.8,3,3,8.8,3,16s5.8,13,13,13s13-5.8,13-13S23.2,3,16,3z M16,5c6.1,0,11,4.9,11,11s-4.9,11-11,11 S5,22.1,5,16S9.9,5,16,5z'/><circle fill='%23ff6b8b' cx='16' cy='16' r='4'/></svg>"), auto;
+  }
+}
+
+/* Animated Blobs Background */
+.App::after {
   content: "";
   position: absolute;
   top: 0;
@@ -19,168 +30,368 @@
   width: 100%;
   height: 100%;
   background-image: 
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><circle cx='20' cy='20' r='3' fill='%23ffb6c1' opacity='0.2'/></svg>"),
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><path d='M30,5 Q40,15 50,5 Q60,15 55,25 Q65,35 50,35 Q40,45 30,35 Q20,45 10,35 Q-5,35 5,25 Q0,15 10,5 Q20,15 30,5' fill='%23ffb6c1' opacity='0.1'/></svg>");
-  background-size: 40px 40px, 60px 60px;
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><path fill='%23ffb6c1' d='M45.2,-58.2C59.1,-49.4,71.2,-36.8,75.3,-21.5C79.4,-6.2,75.5,11.9,66.2,27.7C56.9,43.5,42.2,57.1,25.3,65.8C8.4,74.5,-10.7,78.3,-26.5,72.6C-42.3,66.9,-54.8,51.7,-63.3,34.1C-71.8,16.5,-76.3,-3.5,-71.8,-20.9C-67.3,-38.3,-53.8,-53.1,-38.1,-61.4C-22.5,-69.7,-4.7,-71.5,11.5,-67.4C27.7,-63.3,31.3,-53.3,45.2,-58.2Z' transform='translate(100 100)' opacity='0.1'/></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><path fill='%23ff85a2' d='M42.2,-56.5C55.4,-48.3,67,-36.3,73.1,-21.3C79.2,-6.3,79.8,11.7,72.8,27.1C65.8,42.5,51.3,55.3,34.8,62.7C18.3,70.1,-0.3,72.1,-16.5,66.2C-32.7,60.3,-46.5,46.5,-55.5,30.3C-64.5,14.1,-68.7,-4.5,-64.8,-21.3C-60.9,-38.1,-48.9,-53.1,-33.8,-60.8C-18.7,-68.5,-0.5,-68.9,16.1,-63.6C32.7,-58.3,49.3,-47.3,42.2,-56.5Z' transform='translate(100 100)' opacity='0.1'/></svg>");
+  background-size: 300px 300px, 400px 400px;
+  background-position: -50px -50px, 100px 150px;
   z-index: 0;
   pointer-events: none;
+  animation: float-blobs 20s ease-in-out infinite alternate;
 }
 
-/* Header decoration */
-.App-header-decoration {
-  position: absolute;
-  top: -50px;
-  right: -50px;
-  width: 150px;
-  height: 150px;
-  background-color: #ff85a2;
+@keyframes float-blobs {
+  0% { background-position: -50px -50px, 100px 150px; }
+  50% { background-position: -100px 50px, 200px 100px; }
+  100% { background-position: -50px 100px, 50px 200px; }
+}
+
+/* Kawaii Loading Spinner */
+.moe-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ffb6c1;
+  border-top: 5px solid #ff6b8b;
   border-radius: 50%;
-  filter: blur(40px);
-  opacity: 0.3;
-  z-index: 0;
+  animation: spin 1s linear infinite;
+  position: relative;
 }
 
-/* Cute scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
+.moe-spinner::after {
+  content: "♥";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ff6b8b;
+  font-size: 20px;
+  animation: pulse 1s ease infinite alternate;
 }
 
-::-webkit-scrollbar-track {
-  background: #ffe6eb;
-  border-radius: 10px;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-::-webkit-scrollbar-thumb {
-  background: #ff85a2;
-  border-radius: 10px;
+@keyframes pulse {
+  0% { transform: translateX(-50%) scale(1); }
+  100% { transform: translateX(-50%) scale(1.2); }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #ff6b8b;
-}
-
-body {
-  padding: 0;
-  margin: 0;
-  background: linear-gradient(135deg, #fff5f7 0%, #f0f8ff 100%);
-}
-
-/* Kawaii button styles */
-.moe-button {
-  background-color: #ff85a2;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-size: 16px;
+/* Kawaii Checkbox */
+.moe-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ffb6c1;
+  border-radius: 5px;
+  outline: none;
   cursor: pointer;
   position: relative;
-  overflow: hidden;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(255, 133, 162, 0.3);
-  z-index: 1;
 }
 
-.moe-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(255, 133, 162, 0.4);
+.moe-checkbox:checked {
+  background-color: #ff85a2;
+  border-color: #ff85a2;
 }
 
-.moe-button:active {
-  transform: translateY(1px);
-}
-
-.moe-button::after {
-  content: "";
+.moe-checkbox:checked::after {
+  content: "♥";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+}
+
+/* Kawaii Toggle Switch */
+.moe-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.moe-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.moe-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffb6c1;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.moe-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .moe-slider {
+  background-color: #ff6b8b;
+}
+
+input:checked + .moe-slider:before {
+  transform: translateX(26px);
+}
+
+/* Kawaii Tooltip */
+.moe-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.moe-tooltip .moe-tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #ff85a2;
+  color: white;
+  text-align: center;
+  border-radius: 20px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
   opacity: 0;
   transition: opacity 0.3s;
 }
 
-.moe-button:hover::after {
-  opacity: 1;
-}
-
-/* Cute notification badge */
-.moe-badge {
-  display: inline-block;
-  background-color: #ff6b8b;
-  color: white;
-  border-radius: 50px;
-  padding: 2px 8px;
-  font-size: 12px;
+.moe-tooltip .moe-tooltiptext::after {
+  content: "";
   position: absolute;
-  top: -8px;
-  right: -8px;
-  animation: heartbeat 1.2s ease infinite;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #ff85a2 transparent transparent transparent;
 }
 
-/* Kawaii input fields */
-.moe-input {
-  border: 2px solid #ffb6c1;
+.moe-tooltip:hover .moe-tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* Kawaii Progress Bar */
+.moe-progress {
+  width: 100%;
+  height: 20px;
+  background-color: #ffb6c1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.moe-progress-bar {
+  height: 100%;
+  background-color: #ff6b8b;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.moe-progress-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  animation: progress-shine 2s infinite;
+}
+
+@keyframes progress-shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Kawaii Dropdown */
+.moe-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.moe-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(255,133,162,0.2);
+  border-radius: 15px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.moe-dropdown:hover .moe-dropdown-content {
+  display: block;
+  animation: fadeIn 0.3s;
+}
+
+.moe-dropdown-item {
+  color: #ff6b8b;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.moe-dropdown-item:hover {
+  background-color: #ffe6eb;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Kawaii Card */
+.moe-card {
+  background: white;
   border-radius: 20px;
-  padding: 10px 15px;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(255,182,193,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
 }
 
-.moe-input:focus {
-  outline: none;
-  border-color: #ff85a2;
-  box-shadow: 0 0 0 3px rgba(255, 133, 162, 0.2);
+.moe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(255,182,193,0.3);
 }
 
-/* Floating hearts decoration */
-.floating-hearts {
-  position: fixed;
+.moe-card::before {
+  content: "";
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #ff6b8b, #ffb6c1, #ff6b8b);
+}
+
+/* Kawaii Tab System */
+.moe-tabs {
+  display: flex;
+  border-bottom: 2px solid #ffb6c1;
+}
+
+.moe-tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #ff6b8b;
+  border-radius: 10px 10px 0 0;
+  transition: all 0.3s;
+}
+
+.moe-tab.active {
+  background-color: #ff6b8b;
+  color: white;
+}
+
+.moe-tab:hover:not(.active) {
+  background-color: #ffe6eb;
+}
+
+/* Kawaii Modal */
+.moe-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
   height: 100%;
-  pointer-events: none;
+  background-color: rgba(255,182,193,0.5);
+}
+
+.moe-modal-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 20px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 5px 30px rgba(255,133,162,0.3);
+  position: relative;
+  animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.moe-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #ff6b8b;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.moe-close:hover {
+  transform: rotate(90deg);
+}
+
+/* Kawaii Notification */
+.moe-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff6b8b;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(255,107,139,0.3);
+  transform: translateX(150%);
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   z-index: 1000;
 }
 
-.heart {
+.moe-notification.show {
+  transform: translateX(0);
+}
+
+.moe-notification::after {
+  content: "♥";
   position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: white;
+  color: #ff6b8b;
   width: 20px;
   height: 20px;
-  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff6b8b'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>") no-repeat center center;
-  opacity: 0;
-  animation: float-up 4s ease-in-out infinite;
-}
-
-@keyframes float-up {
-  0% {
-    transform: translateY(100vh) scale(0.5);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.8;
-  }
-  90% {
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(-20vh) scale(1.2);
-    opacity: 0;
-  }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .App::before {
-    background-size: 30px 30px, 40px 40px;
-  }
-  
-  .moe-button {
-    padding: 8px 16px;
-    font-size: 14px;
-  }
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
